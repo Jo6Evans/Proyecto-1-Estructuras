@@ -1,7 +1,7 @@
 #include "Menu.h"
 
 Menu::Menu(){
-	
+	//HAFHF
 	int decision;
 	cout << "Menu de opciones\n"
 		<< "1. Historial de navegacion\n"
