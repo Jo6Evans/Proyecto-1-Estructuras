@@ -127,12 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Navegador.cpp" />
     <ClCompile Include="Proyecto 1 Estructuras.cpp" />
     <ClCompile Include="Sitioweb.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Navegador.h" />
     <ClInclude Include="Sitioweb.h" />
     <ClInclude Include="Vector.h" />
