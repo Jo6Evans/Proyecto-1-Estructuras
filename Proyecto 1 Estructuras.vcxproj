@@ -127,13 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CargarSitiosWeb.cpp" />
     <ClCompile Include="Navegador.cpp" />
+    <ClCompile Include="PaginaWeb.cpp" />
     <ClCompile Include="Proyecto 1 Estructuras.cpp" />
     <ClCompile Include="Sitioweb.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CargarSitiosWeb.h" />
     <ClInclude Include="Navegador.h" />
+    <ClInclude Include="PaginaWeb.h" />
     <ClInclude Include="Sitioweb.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>

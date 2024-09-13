@@ -10,6 +10,6 @@ private:
 public:
     Navegador();
     void agregarPestana();
-
+    
 };
 #endif // !NAVEGADOR_H
