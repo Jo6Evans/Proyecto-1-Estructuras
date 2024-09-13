@@ -7,11 +7,17 @@
 #include"CargarSitiosWeb.h"
 int main()
 {
+    list<int> lista;
+    lista.push_back(1);
+    lista.push_back(2);
+    lista.push_back(3);
+    lista.push_back(4);
+
 
     ////escucha para el movimiento entre pestanas y sitios web
     //while (true) {
     //    // Detectar si la flecha derecha fue presionada
-    //    if (GetAsyncKeyState(VK_RIGHT)) {
+    //    if (GetAsyncKeyState(VK_UP)) {
     //        cout << " a\n";
     //    }
 
