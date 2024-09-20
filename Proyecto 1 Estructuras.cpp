@@ -5,6 +5,7 @@
 #include "Sitioweb.h"
 #include"Vector.h"
 #include"CargarSitiosWeb.h"
+#include "Menu.h"
 int main()
 {
     list<int> lista;
@@ -12,6 +13,11 @@ int main()
     lista.push_back(2);
     lista.push_back(3);
     lista.push_back(4);
+
+    Menu menu;
+    menu.mostrar();
+
+    
 
 
     ////escucha para el movimiento entre pestanas y sitios web

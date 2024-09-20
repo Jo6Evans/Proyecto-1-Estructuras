@@ -2,16 +2,15 @@
 #define MENU_H
 #include <sstream>
 #include <iostream>
+#include "Vector.h"
 using namespace std;
 	
 class Menu {
 private:
-
 public:
-	Menu();
-	void subMenu();
-
-
+	void mostrar();
+	void subMenu(int);
+	void aux();
 };
 
 
