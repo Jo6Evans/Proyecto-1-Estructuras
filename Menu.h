@@ -3,6 +3,8 @@
 #include <sstream>
 #include <iostream>
 #include "Vector.h"
+#include "Sitioweb.h"
+#include "Navegador.h"
 using namespace std;
 	
 class Menu {
