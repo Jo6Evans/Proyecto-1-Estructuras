@@ -3,11 +3,13 @@
 #include<list>
 #include<Windows.h>
 #include"Vector.h"
+#include"CargarSitiosWeb.h"
 
 class Navegador{
 private:
     list<Vector*> navegador;
-    list<Vector*>::iterator iter;
+    list<Vector*>::iterator iter; //con este siempre tenemos la pestaña actual
+    list<PaginaWeb> paginasWeb;
     void navegarArriba(); // visibles solo para la propia clase Dentro de la clase
     void navegarAbajo();
 public:
@@ -15,6 +17,13 @@ public:
     void agregarPestana();
     bool verificaPestania();
     void navegar(char);
+    void navegarHistorial(char);
     void mostrarActual();
+    void agregarSitioWeb(string);
+    void agregarMarcador();
+    void eliminarMarcador();
+    void modificarCapacidad(int);
+    void mostrarHistorial(); //de pestana actual
+    bool verificarHistorial();
 };
 #endif // !NAVEGADOR_H

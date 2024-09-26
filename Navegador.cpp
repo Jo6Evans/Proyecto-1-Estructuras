@@ -3,32 +3,24 @@
 void Navegador::navegarArriba() {
 	list<Vector*>::iterator iterFin = navegador.end(); //ve al null o sea fin de la lista de pestanas
 	iter++;//avanzar
-	if (iter != iterFin)
-		mostrarActual();
-	else {
+	if (iter == iterFin)
 		iter--;
-		mostrarActual();
-	}
 }
 
 void Navegador::navegarAbajo() {
-	list<Vector*>::reverse_iterator iterFin = navegador.rend(); //ve al principio null de la lista de pestanas
-	iter--; //devolverse
-	if (iter != --iterFin.base()) //comparar con el base()-1 porque esta +1 del normal
-		mostrarActual();
-	else {						  //si es igual es porque ven a nulo entonces tiene que avanzar/quedarse en la posicion 0 y no -1
-		iter++;
-		mostrarActual();
-	}
+	if (iter != navegador.begin())
+		iter--;//devolverse
 }
 
-Navegador::Navegador() { }
+Navegador::Navegador() {
+	paginasWeb = CargarSitiosWeb::cargarSitiosWeb();
+}
 
 void Navegador::agregarPestana() { //creando pestana y agregandola
 	Vector* pestania = new Vector();
 	navegador.push_back(pestania);
 	iter = navegador.end(); //esto apunta a null entonces 
-	iter--;					//se disminuye la posicion o mueve para la izquierda para estar en la ultima pestana (objeto) agregada
+	iter--;					//se disminuye la posicion o mueve para la izquierda (n-1) para estar en la ultima pestana (objeto) agregada
 }
 
 bool Navegador::verificaPestania() { //un if que si la cantidad de pestanas del navegador es 0 retorna false sino true
@@ -37,15 +29,58 @@ bool Navegador::verificaPestania() { //un if que si la cantidad de pestanas del 
 
 void Navegador::navegar(char tecla) {// arriba y abajo porque es entre pestanas
 	switch (tecla) {
-	case 'W':
+	case 72:
 		navegarArriba();
 		break;
-	case 'S':
+	case 80:
 		navegarAbajo();
 		break;
 	}
 }
 
-void Navegador::mostrarActual(){
-	(*iter)->mostrarActual();
+void Navegador::navegarHistorial(char c){
+	(*iter)->navegar(c);
+}
+
+void Navegador::mostrarActual() {
+	cout << (*iter)->mostrarActual();
+}
+
+void Navegador::agregarSitioWeb(string url) {
+	Sitioweb* sitio = new Sitioweb();
+	for (PaginaWeb p : paginasWeb) {
+		if (p.getUrl() == url) {
+			sitio->setTitulo(p.getTitulo());
+			sitio->setUrl(url);
+			break;
+		}
+	}
+	if (sitio->getTitulo() != "404 - NOT FOUND") 
+		(*iter)->agregarSitio(sitio);
+	else {
+		cout << sitio->toString();
+		Sleep(2000);
+		system("cls");
+	}
+	mostrarActual();
+}
+
+void Navegador::agregarMarcador(){
+	(*iter)->agregarMarcador();
+}
+
+void Navegador::eliminarMarcador(){
+	(*iter)->eliminarMarcador();
+}
+
+void Navegador::modificarCapacidad(int c){
+	(*iter)->modificarCapacidad(c);
+}
+
+void Navegador::mostrarHistorial(){
+	cout << (*iter)->mostrarHistorial();
+}
+
+bool Navegador::verificarHistorial(){
+	return (*iter)->verificarHistorial();
 }

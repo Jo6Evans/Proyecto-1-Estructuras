@@ -3,7 +3,7 @@
 #include"Sitioweb.h"
 #include<Windows.h>
 #include<vector>
-class Vector{
+class Vector{ //es historial
 private:
 	int actual;
 	vector<Sitioweb*> historial;
@@ -16,5 +16,6 @@ public:
 	void agregarMarcador();
 	void eliminarMarcador();
 	void modificarCapacidad(int);
+	bool verificarHistorial(); //verificar que hay al menos una pagina web dentro del historial
 };
 #endif // !VECTOR_H
