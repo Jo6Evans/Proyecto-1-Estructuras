@@ -14,9 +14,12 @@ private:
     void navegarAbajo();
 public:
     Navegador();
+    ~Navegador();
+    void setNavegador(list<Vector*>);
     void agregarPestana();
     bool verificaPestania();
     void navegar(char);
+    list<Vector*> getNavegador();
     void navegarHistorial(char);
     void mostrarActual();
     void agregarSitioWeb(string);
@@ -24,6 +27,7 @@ public:
     void eliminarMarcador();
     void modificarCapacidad(int);
     void mostrarHistorial(); //de pestana actual
+    void mostrarMarcadores();
     bool verificarHistorial();
 };
 #endif // !NAVEGADOR_H

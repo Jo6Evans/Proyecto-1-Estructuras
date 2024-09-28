@@ -12,11 +12,24 @@ void Navegador::navegarAbajo() {
 		iter--;//devolverse
 }
 
-Navegador::Navegador() {
+Navegador::Navegador() { //carga las paginas web en una lista de vectores
 	paginasWeb = CargarSitiosWeb::cargarSitiosWeb();
 }
 
-void Navegador::agregarPestana() { //creando pestana y agregandola
+Navegador::~Navegador(){ //O(n)
+	for (auto it = navegador.begin(); it != navegador.end(); ++it) {
+		delete* it;  // Liberar la memoria del vector
+	}
+	navegador.clear();
+}
+
+void Navegador::setNavegador(list<Vector*> nav){
+	navegador = nav;
+	iter = navegador.end();
+	iter--;
+}
+
+void Navegador::agregarPestana() { //creando pestana y agregandola O(1)
 	Vector* pestania = new Vector();
 	navegador.push_back(pestania);
 	iter = navegador.end(); //esto apunta a null entonces 
@@ -38,8 +51,13 @@ void Navegador::navegar(char tecla) {// arriba y abajo porque es entre pestanas
 	}
 }
 
-void Navegador::navegarHistorial(char c){
-	(*iter)->navegar(c);
+list<Vector*> Navegador::getNavegador(){
+	return navegador;
+}
+
+void Navegador::navegarHistorial(char c) {
+	if (verificarHistorial())
+		(*iter)->navegar(c);
 }
 
 void Navegador::mostrarActual() {
@@ -55,32 +73,41 @@ void Navegador::agregarSitioWeb(string url) {
 			break;
 		}
 	}
-	if (sitio->getTitulo() != "404 - NOT FOUND") 
+	if (sitio->getTitulo() != "404 - NOT FOUND")
 		(*iter)->agregarSitio(sitio);
 	else {
 		cout << sitio->toString();
 		Sleep(2000);
 		system("cls");
 	}
-	mostrarActual();
+	if (verificarHistorial())
+		mostrarActual();
 }
 
-void Navegador::agregarMarcador(){
+void Navegador::agregarMarcador() {
 	(*iter)->agregarMarcador();
 }
 
-void Navegador::eliminarMarcador(){
+void Navegador::eliminarMarcador() {
 	(*iter)->eliminarMarcador();
 }
 
-void Navegador::modificarCapacidad(int c){
+void Navegador::modificarCapacidad(int c) {
 	(*iter)->modificarCapacidad(c);
 }
 
-void Navegador::mostrarHistorial(){
+void Navegador::mostrarHistorial() {
 	cout << (*iter)->mostrarHistorial();
 }
 
-bool Navegador::verificarHistorial(){
+void Navegador::mostrarMarcadores() {
+	list<Vector*>::iterator iterAux = navegador.begin();
+	while (iterAux != navegador.end()) {
+		cout << (*iterAux)->mostrarMarcadores();
+		iterAux++;
+	}
+}
+
+bool Navegador::verificarHistorial() {
 	return (*iter)->verificarHistorial();
 }

@@ -9,10 +9,13 @@ private:
 	vector<Sitioweb*> historial;
 public:
 	Vector();
+	~Vector();
 	void agregarSitio(Sitioweb*);
 	string mostrarHistorial(); //(tostring)
 	string mostrarActual();   //(tostring 2)
+	string mostrarMarcadores(); //(tostring 3)
 	string navegar(char);
+	vector<Sitioweb*> getHistorial(); //retorna todo el historial
 	void agregarMarcador();
 	void eliminarMarcador();
 	void modificarCapacidad(int);

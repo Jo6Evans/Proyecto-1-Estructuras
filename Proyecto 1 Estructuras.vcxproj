@@ -129,19 +129,26 @@
   <ItemGroup>
     <ClCompile Include="CargarSitiosWeb.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="MenuIncognito.cpp" />
     <ClCompile Include="Navegador.cpp" />
     <ClCompile Include="PaginaWeb.cpp" />
     <ClCompile Include="Proyecto 1 Estructuras.cpp" />
+    <ClCompile Include="Serializar.cpp" />
     <ClCompile Include="Sitioweb.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h" />
     <ClInclude Include="CargarSitiosWeb.h" />
+    <ClInclude Include="MenuIncognito.h" />
     <ClInclude Include="Navegador.h" />
     <ClInclude Include="PaginaWeb.h" />
+    <ClInclude Include="Serializar.h" />
     <ClInclude Include="Sitioweb.h" />
     <ClInclude Include="Vector.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="historial.bin" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

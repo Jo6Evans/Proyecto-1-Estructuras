@@ -5,6 +5,13 @@ Vector::Vector() {
 	actual = -1;		   //se tiene que empezar en 0, para que cuando se agregue empiece desde 0 y no desde 1
 }
 
+Vector::~Vector(){
+	for (auto sitio : historial) {
+		delete sitio;  // Liberar la memoria del objeto Sitioweb
+	}
+	historial.clear();
+}
+
 void Vector::agregarSitio(Sitioweb* s) {
 	if (historial.size() < historial.capacity()) {  //verificar que la capacidad sea mayor a la cantidad
 		historial.push_back(s);		//agregando
@@ -26,8 +33,18 @@ string Vector::mostrarActual() {  //muestra el sitio web actual
 	return historial[actual]->toString();
 }
 
+string Vector::mostrarMarcadores() //probar
+{
+	stringstream s;
+	for (int i = 0; i < historial.size(); i++) {
+		if (historial[i]->getMarcador())
+			s << historial[i]->toString();
+	}
+	return s.str();
+}
+
 string Vector::navegar(char tecla) { //las teclas son derecha e izquierda porque son los sitios web
-	if (actual > -1)
+//	if (actual > -1)
 		switch (tecla) {
 		case 77:
 			actual++;
@@ -51,6 +68,10 @@ string Vector::navegar(char tecla) { //las teclas son derecha e izquierda porque
 			return mostrarActual();
 			break;
 		}
+}
+
+vector<Sitioweb*> Vector::getHistorial(){
+	return historial;
 }
 
 void Vector::agregarMarcador() { //se setea en true porque si esta marcado 

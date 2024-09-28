@@ -13,8 +13,21 @@ void Menu::accederSitioWeb() {
 		cout << "Debe aniadir una pestania antes.\n";
 }
 
+void Menu::modoIncognito() {
+	//Navegacion privada
+	system("cls");
+	MenuIncognito* menuI = new MenuIncognito();
+	menuI->mostrarIncognito();
+	aux();
+	delete menuI;
+}
+
 Menu::Menu() {
 	navegador = new Navegador();
+}
+
+Menu::~Menu() {
+	delete navegador;
 }
 
 void Menu::mostrar() {
@@ -77,19 +90,31 @@ void Menu::subMenu(int opcion) {
 		break;
 
 	case 3:
-		//Sistema de marcadores
-		cout << "----- Sistema de Marcadores -----\n"
-			<< "| 1. Agregar marcador.	     	 |\n"
-			<< "| 2. Eliminar marcador.	     	 |\n"
-			<< "| 3. Mostrar marcadores.         |\n"
-			<< "---------------------------------\n";
-		cin >> subOpc;
-		if (subOpc == 1) {
-			//vec->agregarMarcador();
+		if (navegador->verificaPestania() && navegador->verificarHistorial()) {
+			//Sistema de marcadores
+			cout << "----- Sistema de Marcadores -----\n"
+				<< "| 1. Agregar marcador.	     	 |\n"
+				<< "| 2. Eliminar marcador.	     	 |\n"
+				<< "| 3. Mostrar marcadores.         |\n"
+				<< "---------------------------------\n";
+			cin >> subOpc;
+			switch (subOpc) {
+			case 1:
+				navegador->agregarMarcador();
+				break;
+			case 2:
+				navegador->eliminarMarcador();
+				break;
+			case 3:
+				navegador->mostrarMarcadores();
+				break;
+			default:
+				cout << "Opcion invalida\n";
+				break;
+			}
 		}
-		if (subOpc == 2) {
-			//vec->eliminarMarcador();
-		}
+		else
+			cout << "Debe aniadir al menos una pestania y un sitio web antes...\n";
 		aux();
 		break;
 
@@ -100,20 +125,22 @@ void Menu::subMenu(int opcion) {
 		break;
 
 	case 5:
-		//Navegacion privada
-
-		aux();
+		modoIncognito();
 		break;
-
 	case 6:
 		//Importar historial
-
+		navegador->setNavegador(Serializar::deserializar());
 		aux();
 		break;
 
 	case 7:
 		//Exportar historial
-
+		if (navegador->verificaPestania() && navegador->verificarHistorial()) {
+			Serializar::serializar(navegador->getNavegador());
+			cout << "Historial exportado exitosamente\n";
+		}
+		else
+			cout << "Debe aniadir al menos una pestania y un sitio web antes...\n";
 		aux();
 		break;
 
