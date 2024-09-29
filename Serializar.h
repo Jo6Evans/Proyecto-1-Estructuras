@@ -6,6 +6,8 @@
 #include "Navegador.h"
 
 class Serializar {
+private:
+	static bool archivoVacio(ifstream&);
 public:
 	static void serializar(list<Vector*>);
 	static list<Vector*> deserializar();

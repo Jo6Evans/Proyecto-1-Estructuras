@@ -10,6 +10,7 @@ void MenuIncognito::accederSitioWeb() {
 	}
 	else
 		cout << "Debe aniadir una pestania antes.\n";
+	system("pause");
 }
 
 MenuIncognito::MenuIncognito() {
@@ -20,7 +21,7 @@ MenuIncognito::~MenuIncognito() {
 	delete navegador;
 }
 
-void MenuIncognito::mostrarIncognito() {
+void MenuIncognito::mostrarIncognito() { //hay que hacer casi la misma logica que en menu pero para este, esta limitado a solo hacer lo basico ya que es icognito
 	char decision;
 	int opc = 1;
 	do {
@@ -28,11 +29,11 @@ void MenuIncognito::mostrarIncognito() {
 			if (navegador->verificarHistorial())
 				navegador->mostrarActual();
 
-		cout << "---------------- Menu de opciones ---------------\n"
-			<< "| 1. Acceder a un sitio web				|\n"
-			<< "| 2. Aniadir pestanias					|\n"
-			<< "| 3. Salir de modo incognito			|\n"
-			<< "-------------------------------------------------\n";
+		cout << "-------- Menu de opciones --------\n"
+			<< " | 1. Acceder a un sitio web      |\n"
+			<< " | 2. Aniadir pestanias           |\n"
+			<< " | 3. Salir de modo incognito     |\n"
+			<< "-----------------------------------\n";
 		decision = _getch();
 		if (decision == 0 || decision == -32) {
 			decision = _getch();
@@ -62,15 +63,16 @@ void MenuIncognito::subMenuIncognito(int opcion) {
 	switch (opcion) {
 	case 1:
 		accederSitioWeb();
-		aux();
+		system("cls");
 		break;
 	case 2:
 		navegador->agregarPestana();
+		cout << "Pestania agregada\n\n";
 		aux();
 		break;
 
 	case 3:
-		cout << "Saliendo de modo incognito\n";
+		cout << "Saliendo de modo incognito\n\n";
 		aux();
 		break;
 

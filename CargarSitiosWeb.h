@@ -9,5 +9,3 @@ public:
 	static list<PaginaWeb> cargarSitiosWeb();
 };
 #endif // !CARGARSITIOSWEB_H
-
-

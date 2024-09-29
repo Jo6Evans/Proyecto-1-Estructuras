@@ -1,6 +1,6 @@
 #include "CargarSitiosWeb.h"
 
-list<PaginaWeb> CargarSitiosWeb::cargarSitiosWeb(){
+list<PaginaWeb> CargarSitiosWeb::cargarSitiosWeb(){ //O(1) carga las paginas creando una lista con el contenido del .csv
     ifstream archivo("sitiosweb.csv");
     string linea, url, dominio, titulo;
     list<PaginaWeb> paginas;

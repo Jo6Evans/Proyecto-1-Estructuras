@@ -133,6 +133,7 @@
     <ClCompile Include="Navegador.cpp" />
     <ClCompile Include="PaginaWeb.cpp" />
     <ClCompile Include="Proyecto 1 Estructuras.cpp" />
+    <ClCompile Include="PruebaUnidad.cpp" />
     <ClCompile Include="Serializar.cpp" />
     <ClCompile Include="Sitioweb.cpp" />
     <ClCompile Include="Vector.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="MenuIncognito.h" />
     <ClInclude Include="Navegador.h" />
     <ClInclude Include="PaginaWeb.h" />
+    <ClInclude Include="PruebaUnidad.h" />
     <ClInclude Include="Serializar.h" />
     <ClInclude Include="Sitioweb.h" />
     <ClInclude Include="Vector.h" />

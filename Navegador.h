@@ -9,8 +9,8 @@ class Navegador{
 private:
     list<Vector*> navegador;
     list<Vector*>::iterator iter; //con este siempre tenemos la pestaña actual
-    list<PaginaWeb> paginasWeb;
-    void navegarArriba(); // visibles solo para la propia clase Dentro de la clase
+    list<PaginaWeb> paginasWeb; //lista de paginas web
+    void navegarArriba(); // metodos visibles solo para la propia clase y Dentro de la clase
     void navegarAbajo();
 public:
     Navegador();
@@ -29,5 +29,9 @@ public:
     void mostrarHistorial(); //de pestana actual
     void mostrarMarcadores();
     bool verificarHistorial();
+    void mostrarBusqueda(string);
+    vector<Sitioweb*> navegarFiltro(string);
+    void eliminarHistorial();
+
 };
 #endif // !NAVEGADOR_H
